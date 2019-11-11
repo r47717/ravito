@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { createConnection } = require('../../lib/db');
+const {createConnection} = require('../../lib/db');
 const sequelize = createConnection();
 
 class Post extends Sequelize.Model {
