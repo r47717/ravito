@@ -3,8 +3,17 @@
 {% block body %}
   <main role="main" class="flex-shrink-0">
     <div class="container">
-      <h1 class="mt-5">Sticky footer with fixed navbar</h1>
-      <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>main &gt; .container</code>.</p>
+      <h1 class="mb-3">{{ category }}</h1>
+      {% for post in posts %}
+        <div class="card mb-3">
+            <div class="card-header">{{ post.title }}</div>
+            <div class="card-body">
+                <p>{{ post.description }}</p>
+                <p>{{ post.contacts }}</p>
+                <p>{{ post.status }}</p>
+            </div>
+        </div>
+      {%  endfor %}
     </div>
   </main>
 {% endblock %}

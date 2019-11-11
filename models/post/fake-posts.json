@@ -1,0 +1,32 @@
+[
+  {
+    "title": "post 1",
+    "description": "description 1",
+    "contacts": "1111111",
+    "category": "service"
+  },
+  {
+    "title": "post 2",
+    "description": "description 2",
+    "contacts": "2222222",
+    "category": "auto"
+  },
+  {
+    "title": "post 3",
+    "description": "description 3",
+    "contacts": "3333333",
+    "category": "real-estate"
+  },
+  {
+    "title": "post 4",
+    "description": "description 4",
+    "contacts": "4444444",
+    "category": "job"
+  },
+  {
+    "title": "post 5",
+    "description": "description 5",
+    "contacts": "5555555",
+    "category": "job"
+  }
+]
