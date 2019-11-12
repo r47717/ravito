@@ -1,6 +1,6 @@
 node_modules
 .idea
 .env
-app/.cache
+.cache
 public/js/*
 
