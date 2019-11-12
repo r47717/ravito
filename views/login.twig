@@ -1,1 +1,11 @@
-login
+{% extends 'layout.twig' %}
+{% block head %}
+    {{ parent() }}
+    <meta name="_csrf" content="{{ csrfToken }}">
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block body %}
+    <div id="react-login-form"></div>
+{% endblock %}
+{% block footer %}{% endblock %}
