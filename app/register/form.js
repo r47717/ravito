@@ -26,8 +26,9 @@ function RegisterForm({csrf}) {
                                    onChange={(e) => setPasswordConfirm(e.target.value)} className="form-control mb-4"/>
                             <input type="submit" name="submit" value="Отправить" className="btn btn-success"/>
                         </form>
-                        <div className="mt-5">
-                            <a href="/login">Логин</a>
+                        <div className="mt-5 d-flex justify-content-between">
+                            <div><a href="/login">Логин</a></div>
+                            <div><a href="/">Перейти на сайт</a></div>
                         </div>
                     </div>
                 </div>

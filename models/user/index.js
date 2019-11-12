@@ -3,10 +3,13 @@ const {createConnection} = require('../../lib/db');
 const sequelize = createConnection();
 
 class User extends Sequelize.Model {
+    validPassword(pwd) {
+        return true;
+    }
 }
 
 User.init({
-    name: {
+    username: {
         type: Sequelize.STRING,
         allowNull: false
     },
