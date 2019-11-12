@@ -19,6 +19,9 @@ function LoginForm({csrf}) {
                                    onChange={(e) => setPassword(e.target.value)} className="form-control mb-4"/>
                             <input type="submit" name="submit" value="Отправить" className="btn btn-success"/>
                         </form>
+                        <div className="mt-5">
+                            <a href="/register">Регистрация</a>
+                        </div>
                     </div>
                 </div>
             </div>

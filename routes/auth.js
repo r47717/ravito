@@ -16,7 +16,7 @@ router.get('/register', csrfMiddleware, function(req, res, next) {
 });
 
 router.post('/register', csrfMiddleware, function(req, res, next) {
-    res.render('registration successful');
+    res.send('registration successful');
 });
 
 module.exports = router;
