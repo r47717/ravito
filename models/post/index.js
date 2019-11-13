@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const {createConnection} = require('../../lib/db');
 const sequelize = createConnection();
+const User = require('../user');
+const Image = require('../image');
 
 class Post extends Sequelize.Model {
 }
@@ -26,7 +28,7 @@ Post.init({
     category: {
         type: Sequelize.STRING,
         allowNull: false
-    },
+    }
 }, {
     sequelize,
     modelName: 'post'
@@ -40,6 +42,7 @@ Post.categoryNames = {
     'service': 'Услуги'
 };
 
+Post.hasMany(Image);
 
 module.exports = Post;
 

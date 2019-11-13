@@ -19,9 +19,9 @@ function RegisterForm({csrf}) {
                                    onChange={(e) => setName(e.target.value)} className="form-control mb-2"/>
                             <input type="text" name="email" value={email} placeholder="Email"
                                    onChange={(e) => setEmail(e.target.value)} className="form-control mb-2"/>
-                            <input type="text" name="password" value={password} placeholder="Password"
+                            <input type="password" name="password" value={password} placeholder="Password"
                                    onChange={(e) => setPassword(e.target.value)} className="form-control mb-2"/>
-                            <input type="text" name="password-confirm" value={passwordConfirm}
+                            <input type="password" name="password_confirm" value={passwordConfirm}
                                    placeholder="Confirm Password"
                                    onChange={(e) => setPasswordConfirm(e.target.value)} className="form-control mb-4"/>
                             <input type="submit" name="submit" value="Отправить" className="btn btn-success"/>

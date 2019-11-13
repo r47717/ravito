@@ -2,12 +2,14 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const session = require("express-session");
 const logger = require('morgan');
 const passport = require('./lib/passport');
 
-const indexRouter = require('./routes/index');
+const postRouter = require('./routes/posts');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
+const seedRouter = require('./routes/seed');
 
 const app = express();
 
@@ -20,11 +22,22 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: "sdf09s8df098asd09876A0F987SDF",
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(passport.initialize());
+app.use(passport.session());
+app.use(function(req, res, next) {
+    res.locals.authenticated = !!req.user;  // to use 'authenticated' flag in templates
+    next();
+});
 
-app.use('/', indexRouter);
+app.use('/', postRouter);
 app.use('/users', usersRouter);
 app.use('/', authRouter);
+app.use('/seeder', seedRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
