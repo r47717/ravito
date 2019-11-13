@@ -1,0 +1,11 @@
+{% extends 'layout.twig' %}
+{% block head %}
+    {{ parent() }}
+    <meta name="_csrf" content="{{ csrfToken }}">
+{% endblock %}
+{% block body %}
+    <div id="react-new-post-form"></div>
+    <script type="json" id="post-categories">
+        {{ categories }}
+    </script>
+{% endblock %}

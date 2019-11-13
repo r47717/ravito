@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="en" class="h-100">
-{% block head %}
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Ravito</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel='stylesheet' href='/css/style.css'/>
+        {% block head %}
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <title>Ravito</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <link rel='stylesheet' href='/css/style.css'/>
+        {% endblock %}
     </head>
-{% endblock %}
 <body class="d-flex flex-column h-100">
 
     {% block header %}
@@ -24,16 +24,16 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/post/category/auto">Авто</a>
+                            <a class="nav-link" href="/posts/category/auto">Авто</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/post/category/real-estate">Недвижимость</a>
+                            <a class="nav-link" href="/posts/category/real-estate">Недвижимость</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/post/category/job">Работа</a>
+                            <a class="nav-link" href="/posts/category/job">Работа</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/post/category/service">Услуги</a>
+                            <a class="nav-link" href="/posts/category/service">Услуги</a>
                         </li>
                     </ul>
                     <div class="d-flex justify-content-between">
@@ -51,7 +51,21 @@
                                 </li>
                             {% else %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/logout">Выход</a>
+                                    <a class="nav-link" href="/posts/my">Мои объявления</a>
+                                </li>
+                                <div class="dropdown" id="dropdownProfileContainer">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ user.name }}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownProfile">
+                                        <a class="dropdown-item" href="/posts/my">Мои объявления</a>
+                                        <a class="dropdown-item" href="/profile/settings">Настройки</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="/logout">Выход</a>
+                                    </div>
+                                </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/posts/new">Подать объявление</a>
                                 </li>
                             {% endif %}
                         </ul>

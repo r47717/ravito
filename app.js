@@ -1,11 +1,12 @@
-const createError = require('http-errors');
 const express = require('express');
+const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require("express-session");
 const logger = require('morgan');
-const passport = require('./lib/passport');
+const csrfMiddleware = require('csurf')({ cookie: true });
 
+const passport = require('./lib/passport');
 const postRouter = require('./routes/posts');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
@@ -13,7 +14,6 @@ const seedRouter = require('./routes/seed');
 
 const app = express();
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
 
@@ -30,12 +30,15 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
+    res.locals.user = req.user;
     res.locals.authenticated = !!req.user;  // to use 'authenticated' flag in templates
     next();
 });
 
+app.use(csrfMiddleware);
+
 app.use('/', postRouter);
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 app.use('/', authRouter);
 app.use('/seeder', seedRouter);
 

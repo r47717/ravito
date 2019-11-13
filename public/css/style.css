@@ -44,3 +44,23 @@ code {
     max-width: 300px;
     margin: 20px;
 }
+
+#dropdownProfileContainer {
+    display: flex;
+}
+
+#dropdownProfileContainer .dropdown-item {
+    color: rgba(0,0,0,.75);
+}
+
+#dropdownProfile {
+    background: inherit;
+    color: rgba(255,255,255,.5);
+    border: none;
+    box-shadow: none;
+}
+
+#dropdownProfile:hover {
+    color: rgba(255,255,255,.75);
+}
+
