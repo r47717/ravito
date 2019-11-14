@@ -9,7 +9,7 @@ function LoginForm({csrf}) {
         <div className="row">
             <div className="col-4 offset-4">
                 <div className="card mt-5">
-                    <div className="card-header">Логин</div>
+                    <div className="card-header login-header">Логин</div>
                     <div className="card-body">
                         <form action="/login" method="post">
                             <input type="hidden" value={csrf} name="_csrf" />
@@ -26,6 +26,12 @@ function LoginForm({csrf}) {
                     </div>
                 </div>
             </div>
+            {/* language=CSS */}
+            <style jsx>{`
+                .login-header {
+                    color: blue;
+                }
+            `}</style>
         </div>
     )
 }
