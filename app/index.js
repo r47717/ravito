@@ -29,3 +29,11 @@ if (newPostFormElem) {
         page.renderForm(newPostFormElem, csrf, categories);
     });
 }
+
+const profileSettingsPageElem = document.getElementById('react-profile-settings-page');
+if (profileSettingsPageElem) {
+    const pr = import('./profile-settings/hydrate');
+    pr.then(function(page) {
+        page.pageHydrate(profileSettingsPageElem);
+    });
+}

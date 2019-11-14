@@ -38,7 +38,7 @@ app.use(function(req, res, next) {
 app.use(csrfMiddleware);
 
 app.use('/', postRouter);
-app.use('/user', usersRouter);
+app.use('/', usersRouter);
 app.use('/', authRouter);
 app.use('/seeder', seedRouter);
 
