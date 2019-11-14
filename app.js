@@ -35,12 +35,12 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(csrfMiddleware);
+//app.use(csrfMiddleware);
 
 app.use('/', postRouter);
-app.use('/', usersRouter);
-app.use('/', authRouter);
-app.use('/seeder', seedRouter);
+app.use('/', csrfMiddleware, usersRouter);
+app.use('/', csrfMiddleware, authRouter);
+app.use('/seeder', csrfMiddleware, seedRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
