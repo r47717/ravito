@@ -25,10 +25,13 @@ router.post('/register', async function(req, res, next) {
         status: 'active',
         admin: false
     });
-    
-    passport.authenticate();
-    
-    res.redirect('/');
+
+    req.login(user, function(err) {
+        if (err) {
+            console.log(err);
+        }
+        return res.redirect('/');
+    });
 });
 
 router.get('/logout', function(req, res, next) {

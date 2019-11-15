@@ -15,8 +15,8 @@ Image.init({
         type: Sequelize.STRING,
         allowNull: true
     },
-    data: {
-        type: Sequelize.BLOB,
+    filename: {
+        type: Sequelize.STRING,
         allowNull: false
     }
 }, {

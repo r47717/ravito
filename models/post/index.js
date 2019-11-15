@@ -28,7 +28,7 @@ Post.init({
     category: {
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
 }, {
     sequelize,
     modelName: 'post'

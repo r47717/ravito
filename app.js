@@ -2,9 +2,11 @@ const express = require('express');
 const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const session = require("express-session");
 const logger = require('morgan');
 const csrfMiddleware = require('csurf')({ cookie: true });
+const fileUpload = require('express-fileupload');
 
 const passport = require('./lib/passport');
 const postRouter = require('./routes/posts');
@@ -14,14 +16,20 @@ const seedRouter = require('./routes/seed');
 
 const app = express();
 
+app.use(logger('dev'));
+
+app.use(fileUpload({
+    createParentPath: true,
+    debug: true,
+}));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
 app.use(session({
     secret: "sdf09s8df098asd09876A0F987SDF",
     resave: true,
@@ -34,7 +42,6 @@ app.use(function(req, res, next) {
     res.locals.authenticated = !!req.user;  // to use 'authenticated' flag in templates
     next();
 });
-
 //app.use(csrfMiddleware);
 
 app.use('/', postRouter);

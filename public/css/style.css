@@ -41,7 +41,6 @@ code {
 }
 
 .post-item {
-    max-width: 300px;
     margin: 20px;
 }
 
@@ -64,3 +63,12 @@ code {
     color: rgba(255,255,255,.75);
 }
 
+/* post card */
+
+.post-container .image-container {
+}
+
+.post-container .image-container img {
+    width: 300px;
+    height: auto;
+}

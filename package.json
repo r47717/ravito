@@ -8,11 +8,14 @@
     "app": "./node_modules/.bin/parcel watch ./app/index.js --out-dir ./public/js"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "cookie-parser": "~1.4.4",
     "csurf": "^1.10.0",
     "debug": "~2.6.9",
     "express": "^4.16.4",
+    "express-busboy": "^7.0.1",
+    "express-fileupload": "^1.1.6-alpha.6",
     "express-graphql": "^0.9.0",
     "express-session": "^1.17.0",
     "faker": "^4.1.0",
@@ -26,11 +29,13 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "popper.js": "^1.16.0",
+    "randomstring": "^1.1.5",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "sequelize": "^5.21.2",
     "styled-jsx": "^3.2.4",
-    "twig": "~0.10.3"
+    "twig": "~0.10.3",
+    "unique-filename": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
