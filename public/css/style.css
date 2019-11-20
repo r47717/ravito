@@ -72,3 +72,28 @@ code {
     width: 300px;
     height: auto;
 }
+
+#nav-item-more-popup {
+    position: absolute;
+    display: none;
+    top: 40px;
+    left: -195px;
+    min-width: 440px;
+    min-height: 300px;
+    background: white;
+    box-shadow: 0 1px 14px 0 rgba(24,80,120,.5);
+}
+
+#nav-item-more-popup:after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #FFF;
+    box-shadow: 0 1px 3px rgba(0,63,106,.5);
+    top: -6px;
+    left: 50%;
+    margin-left: -5px;
+    transform: rotate(45deg);
+    z-index: -1;
+}

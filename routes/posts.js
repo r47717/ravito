@@ -11,6 +11,9 @@ const Image = require('../models/image');
 
 router.get('/', async function (req, res, next) {
     const posts = await Post.findAll();
+    for (let post of posts) {
+        post.images = await post.getImages();
+    }
     res.render('index', {posts});
 });
 
@@ -26,6 +29,9 @@ router.get('/posts/category/:category', async function (req, res, next) {
             category
         }
     });
+    for (let post of posts) {
+        post.images = await post.getImages();
+    }
     res.render('index', {
         posts,
         category: Post.categoryNames[category]
@@ -38,7 +44,6 @@ router.get('/posts/my', csrfMiddleware, passport.protectRoute, async function (r
         post.images = await post.getImages();
     }
     console.log(posts);
-    console.log(posts[0].images[0]);
     res.render('index', {posts});
 });
 

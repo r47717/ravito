@@ -1,6 +1,7 @@
 import 'popper.js';
 //import $ from 'jquery';
 import 'bootstrap/dist/js/bootstrap.min';
+import './categories-popup';
 
 const metaCsrf = document.querySelector('meta[name=_csrf]');
 const csrf = metaCsrf && metaCsrf.content;

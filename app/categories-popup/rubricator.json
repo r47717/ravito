@@ -1,0 +1,36 @@
+[
+  {
+    "category": "Транспорт",
+    "items": [
+      {
+        "title": "Автомобили",
+        "slug": "auto"
+      },
+      {
+        "title": "Мотоциклы и мототехника",
+        "slug": "motocycles"
+      },
+      {
+        "title": "Грузовики и спецтехника",
+        "slug": "trucks"
+      }
+    ]
+  },
+  {
+    "category": "Недвижимость",
+    "items": [
+      {
+        "title": "Квартиры",
+        "slug": "flats"
+      },
+      {
+        "title": "Комнаты",
+        "slug": "rooms"
+      },
+      {
+        "title": "Дома, дачи, коттеджи",
+        "slug": "houses"
+      }
+    ]
+  }
+]
