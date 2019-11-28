@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
-const {createConnection} = require('../../lib/db');
+const { createConnection } = require('../../lib/db');
+
 const sequelize = createConnection();
 const Post = require('../post');
 
@@ -12,7 +13,7 @@ class User extends Sequelize.Model {
 User.init({
     username: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
     },
     name: {
         type: Sequelize.STRING,
@@ -37,15 +38,12 @@ User.init({
     status: {
         type: Sequelize.STRING,
         allowNull: false,
-    }
+    },
 }, {
     sequelize,
-    modelName: 'user'
+    modelName: 'user',
 });
 
 User.hasMany(Post);
 
 module.exports = User;
-
-
-

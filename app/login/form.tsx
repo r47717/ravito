@@ -7,7 +7,7 @@ function LoginForm({csrf}) {
     
     return (
         <div className="row">
-            <div className="col-4 offset-4">
+            <div className="col-lg-4 offset-lg-4 col-sm-6 offset-sm-3 col-xs-10 offset-xs-1">
                 <div className="card mt-5">
                     <div className="card-header login-header">Логин</div>
                     <div className="card-body">

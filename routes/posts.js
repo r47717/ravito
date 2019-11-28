@@ -1,24 +1,25 @@
 const express = require('express');
+
 const router = express.Router();
 const csrfMiddleware = require('csurf')({ cookie: true });
-const Post = require('../models/post');
-const passport = require('../lib/passport');
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 const path = require('path');
 const randomstring = require('randomstring');
+const passport = require('../lib/passport');
+const Post = require('../models/post');
 const Image = require('../models/image');
 
-router.get('/', async function (req, res, next) {
+router.get('/', async (req, res, next) => {
     const posts = await Post.findAll();
-    for (let post of posts) {
+    for (const post of posts) {
         post.images = await post.getImages();
     }
-    res.render('index', {posts});
+    res.render('index', { posts });
 });
 
-router.get('/posts/category/:category', async function (req, res, next) {
-    const {params: {category}} = req;
+router.get('/posts/category/:category', async (req, res, next) => {
+    const { params: { category } } = req;
 
     if (Post.categoryNames[category] === undefined) {
         return next();
@@ -26,33 +27,35 @@ router.get('/posts/category/:category', async function (req, res, next) {
 
     const posts = await Post.findAll({
         where: {
-            category
-        }
+            category,
+        },
     });
-    for (let post of posts) {
+    for (const post of posts) {
         post.images = await post.getImages();
     }
     res.render('index', {
         posts,
-        category: Post.categoryNames[category]
+        category: Post.categoryNames[category],
     });
 });
 
-router.get('/posts/my', csrfMiddleware, passport.protectRoute, async function (req, res, next) {
+router.get('/posts/my', csrfMiddleware, passport.protectRoute, async (req, res, next) => {
     const posts = await req.user.getPosts();
-    for (let post of posts) {
+    for (const post of posts) {
         post.images = await post.getImages();
     }
     console.log(posts);
-    res.render('index', {posts});
+    res.render('index', { posts });
 });
 
-router.get('/posts/new', csrfMiddleware, passport.protectRoute, async function (req, res, next) {
+router.get('/posts/new', csrfMiddleware, passport.protectRoute, async (req, res, next) => {
     res.render('newpost', { csrfToken: req.csrfToken(), categories: JSON.stringify(Post.categoryNames) });
 });
 
-router.post('/posts', csrfMiddleware, passport.protectRoute, async function(req, res) {
-    const {title, description, contacts, category} = req.body;
+router.post('/posts', csrfMiddleware, passport.protectRoute, async (req, res) => {
+    const {
+        title, description, contacts, category,
+    } = req.body;
 
     const NN = 6; // max images to upload
     const images = [];
@@ -65,7 +68,7 @@ router.post('/posts', csrfMiddleware, passport.protectRoute, async function(req,
             const image = await Image.create({
                 title: obj.name,
                 filename,
-                description: null
+                description: null,
             });
 
             images.push(image);
@@ -73,11 +76,11 @@ router.post('/posts', csrfMiddleware, passport.protectRoute, async function(req,
     }
 
     const post = await Post.create({
-        title, description, contacts, category
+        title, description, contacts, category,
     });
     await req.user.addPost(post);
 
-    for(let image of images) {
+    for (const image of images) {
         await post.addImage(image);
     }
 
@@ -102,14 +105,14 @@ const schema = buildSchema(`
 `);
 
 const root = {
-    posts: async ({id, category, status}) => {
+    posts: async ({ id, category, status }) => {
         const where = {};
 
-        (typeof id === 'number') && (where['id'] = id);
-        (typeof category === 'string') && (where["category"] = category);
-        (typeof status === 'string') && (where["status"] = status);
+        (typeof id === 'number') && (where.id = id);
+        (typeof category === 'string') && (where.category = category);
+        (typeof status === 'string') && (where.status = status);
 
-        return await Post.findAll({ where });
+        return Post.findAll({ where });
     },
 };
 
