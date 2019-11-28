@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon -e js,twig,css,html server.js",
-    "app": "./node_modules/.bin/parcel watch ./app/index.js --out-dir ./public/js"
+    "app": "./node_modules/.bin/parcel watch ./app/index.ts --out-dir ./public/js",
+    "lint": "./node_modules/.bin/eslint *.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -40,7 +41,11 @@
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-react": "^7.7.0",
-    "parcel-bundler": "^1.12.4"
+    "eslint": "^6.7.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.7.2"
   },
   "babel": {
     "presets": [

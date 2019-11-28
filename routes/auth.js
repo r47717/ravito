@@ -1,42 +1,44 @@
 const express = require('express');
+
 const router = new express.Router();
 const passport = require('../lib/passport');
 const User = require('../models/user');
 
-router.get('/login', function(req, res, next) {
-    res.render('login', { csrfToken: req.csrfToken() })
+router.get('/login', (req, res, next) => {
+  res.render('login', { csrfToken: req.csrfToken() });
 });
 
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/', failureRedirect: '/login' }));
+router.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login' }));
 
-router.get('/register', function(req, res, next) {
-    res.render('registration', { csrfToken: req.csrfToken() });
+router.get('/register', (req, res, next) => {
+  res.render('registration', { csrfToken: req.csrfToken() });
 });
 
-router.post('/register', async function(req, res, next) {
-    const {name, email, password, password_confirm} = req.body;
-    const user = await User.create({
-        username: email,
-        name,
-        password,
-        phone: '',
-        address: '',
-        status: 'active',
-        admin: false
-    });
+router.post('/register', async (req, res, next) => {
+  const {
+    name, email, password, password_confirm,
+  } = req.body;
+  const user = await User.create({
+    username: email,
+    name,
+    password,
+    phone: '',
+    address: '',
+    status: 'active',
+    admin: false,
+  });
 
-    req.login(user, function(err) {
-        if (err) {
-            console.log(err);
-        }
-        return res.redirect('/');
-    });
+  req.login(user, (err) => {
+    if (err) {
+      console.log(err);
+    }
+    return res.redirect('/');
+  });
 });
 
-router.get('/logout', function(req, res, next) {
-    req.logout();
-    res.redirect('/');
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/');
 });
 
 module.exports = router;
